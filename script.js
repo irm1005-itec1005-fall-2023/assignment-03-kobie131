@@ -32,7 +32,8 @@
  */
 
 
-// Data storage - Initialize the array of To Do items
+// Data storage - Initialize the array of To Do items 
+let todoItems=[]
 //
 // NOTE:
 //
@@ -50,9 +51,21 @@
 // and it should add a new todo item to the todoItems array
 // the function does not need to return anything
 function addToDoItem(text) {
-  // Implement the logic to add a task here
+  // Implement the logic to add a task here 
+  if (typeof text!="string")
+  {
+    console.error("todoItems must be a string");
+    return;
+  }
+  if (!txt.trim())
+  {
+    console.error("todoItems cannot be empty");
+    return;
+  }
+  const newId= todoItems.length>1? Math.max(...todoItems.map(item => item.id))+1:0;
+  todoItems.push({id:newid,text:text,completed:false})
 
-  console.log("NOT YET IMPLEMENTED"); // Remove this line when you start working on the function
+ 
 }
 
 // Function to remove a todo to the list
