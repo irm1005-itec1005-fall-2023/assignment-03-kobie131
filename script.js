@@ -57,13 +57,15 @@ function addToDoItem(text) {
     console.error("todoItems must be a string");
     return;
   }
-  if (!txt.trim())
+  if (!text.trim())
   {
     console.error("todoItems cannot be empty");
     return;
   }
   const newId= todoItems.length>1? Math.max(...todoItems.map(item => item.id))+1:0;
-  todoItems.push({id:newid,text:text,completed:false})
+  todoItems.push({id:newId,text:text,completed:false});
+  console.log(todoItems);
+
 
  
 }
@@ -80,13 +82,13 @@ function removeToDoItem(todoId) {
     console.error("todoId must be a number");
     return;
   }
-  const itemindex=todoitems.findindex(item=>item.id===todoId);
-  if (itemindex===-1)
+  const itemIndex=todoItems.findIndex(item=>item.id===todoId)
+  if (itemIndex===-1)
   {
     console.error("todoitem not found");
     return;
   }
-  todoitems.splice(itemindex,1);
+  todoItems.splice(itemIndex,1);
 
   
 }
@@ -103,10 +105,10 @@ function markToDoItemAsCompleted(todoId) {
     console.error("todoId must be a number");
     return;
   }
-  const item= todoItems.find(item=>item.id===todoid);
+  const item= todoItems.find(item=>item.id===todoId);
   if (!item)
   {
-    console.error("todoItems not found");
+    console.log("todoItems not found");
     return;
   }
   item.completed=true;
@@ -122,7 +124,7 @@ function markToDoItemAsCompleted(todoId) {
 // true or false depending on whether the item was successfully deleted
 function deleteToDoItem(todoId) {
   // Implement the logic to remove a task here
-removetodoItem(todoId)
+  removeToDoItem(todoId)
   
 }
 
@@ -141,5 +143,5 @@ todoItems=todoItems.filter(item=>!item.completed);
 // For example, you could run:
   addToDoItem("Test ToDo"); // This should add a new todo item to the array
  console.log(todoItems); // This should show the todo item you added
-  removeToDoItem(0); // This should remove the todo item with ID 0 from the array
   markToDoItemAsCompleted(0); // This should mark the todo item with ID 0 as completed
+  removeToDoItem(0); // This should remove the todo item with ID 0 from the array
